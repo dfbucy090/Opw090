@@ -25,7 +25,7 @@ env:
   FEEDS_CONF: lede/feeds.conf.default
   CONFIG_FILE: lede/Build-ARMv8.config
   DIY_P1_SH: lede/diy-part1.sh
-  DIY_P2_SH: lede/diy-armv8.sh
+  DIY_P2_SH: lede/diy-x86.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: false
@@ -184,7 +184,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         body: |
           * ARMv8 精简固件.
-          * Default IP: 192.168.1.1
+          * Default IP: 192.168.1.2
           * Default username: root
           * Default password: password
 
