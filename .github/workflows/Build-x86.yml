@@ -130,7 +130,7 @@ jobs:
         cp -rf $(find ../bin/packages/ -type f -name "*.ipk") ./package/
         cd ./package
         tar -zcvf IPK.tar.gz *
-        mv -f IPK.tar.gz ../targets/*/*
+        #mv -f IPK.tar.gz ../targets/*/*
 
     - name: Deliver package
       uses: actions/upload-artifact@v3
@@ -151,9 +151,6 @@ jobs:
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "{status}={success}" >> $GITHUB_OUTPUT
-        with:
-        name: OpenWrt_firmware${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: ${{ env.FIRMWARE }}
 
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@v1
