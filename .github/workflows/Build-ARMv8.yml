@@ -11,7 +11,7 @@
 name: Build-ARMv8
 
 on:
-#  repository_dispatch:
+  repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
@@ -188,27 +188,19 @@ jobs:
           * Default username: root
           * Default password: password
 
-#    - name: Delete workflow runs
-#      uses: GitRML/delete-workflow-runs@main
-#      with:
-#        token: ${{ secrets.GITHUB_TOKEN }}
-#        repository: ${{ github.repository }}
-#        retain_days: 1
-#        keep_minimum_runs: 5
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        retain_days: 1
+        keep_minimum_runs: 5
 
-#    - name: Remove old Releases
-#      uses: dev-drprasad/delete-older-releases@v0.2.0
-#      with:
-#        repo: ${{ github.repository }}
-#        keep_latest: 8
-#        delete_tags: true
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Telegram notification
-      run: |
-        MSG="
-        编译时间：${{ env.DATE }}
-        ARMv8 编译完成
-        "
-        curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${MSG}"
+    - name: Remove old Releases
+      uses: dev-drprasad/delete-older-releases@v0.2.0
+      with:
+        repo: ${{ github.repository }}
+        keep_latest: 8
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
