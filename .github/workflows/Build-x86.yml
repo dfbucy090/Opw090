@@ -149,7 +149,7 @@ jobs:
       with:
         name: OpenWrt-x86 ${{ env.PRODUCT_NAME }}${{ env.DATE }}
         tag: ${{ env.TAG_DATE }}
-        artifacts: ${{ env.FIRMWARE }}/*
+        artifacts: ${{ env.FIRMWARE }}/*.img.gz
         allowUpdates: true
         removeArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
