@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build-ARMv8
+name: N1
 
 on:
   repository_dispatch:
@@ -176,7 +176,7 @@ jobs:
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@v1
       with:
-        name: OpenWrt-ARMv8 ${{ env.DATE }}
+        name: N1 ${{ env.DATE }}
         tag: ${{ env.TAG_DATE }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*.gz
         allowUpdates: true
