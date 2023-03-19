@@ -159,15 +159,23 @@ jobs:
           * Default username: root
           * Default password: password
           
-    - name: Automatic Release
-      uses: marvinpinto/action-automatic-releases@latest
-      env:
-       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: 清理Actions空间
+      uses: Mattraks/delete-workflow-runs@main
       with:
-        repository: ${{ github.repository }}
-        prerelease: false
-        delete_old_releases: true
-        max_releases: 8
-
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          keep_minimum_runs: 6
+          retain_days: 30
+          #retain_days: ${{ github.event.inputs.action_days }}
+    
+    - name: 删除多余releases
+      uses: dev-drprasad/delete-older-releases@master
+      with:
+        repo: ${{ github.repository }}
+        keep_latest: 15
+        #keep_latest: ${{ github.event.inputs.rele }}
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
