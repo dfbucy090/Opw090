@@ -12,15 +12,7 @@
 
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
 sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 20
 sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 20
-
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 10
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 10
-
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 1
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 1
-
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
