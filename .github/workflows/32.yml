@@ -40,14 +40,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
-      
-    - name: Check server configuration
-      run: |
-        cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c > CPU
-        cat /proc/cpuinfo | grep "cpu cores" | uniq >> CPU
-        sed -i 's|[[:space:]]||g; s|^.||' CPU && sed -i 's|CPU||g; s|pucores:||' CPU
-        CPUNAME="$(awk 'NR==1' CPU)" && CPUCORES="$(awk 'NR==2' CPU)"
-        curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=正在使用 [${CPUNAME} CPU]  [${CPUCORES} 核心]  [lede] 源码 编译固件中,请耐心等待..." "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=${MSG}"
         
     - name: Initialization environment
       env:
