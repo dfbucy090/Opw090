@@ -22,10 +22,7 @@ rm -rf feeds/luci/applications/luci-app-wrtbwmon
 rm -rf feeds/luci/applications/luci-app-dockerman
 
 # 添加额外软件包
-cd lede 
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-git pull
+
 
 # Themes
 git clone --depth 1 -b 18.06 https://github.com/kiddin9/luci-theme-edge package/luci-theme-edge
