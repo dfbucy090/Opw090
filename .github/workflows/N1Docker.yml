@@ -25,7 +25,7 @@ env:
   FEEDS_CONF: lede/feeds.conf.default
   CONFIG_FILE: lede/N1Docker.config
   DIY_P1_SH: lede/diy-part1.sh
-  DIY_P2_SH: lede/diy.sh
+  DIY_P2_SH: lede/diy1.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: false
