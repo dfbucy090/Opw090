@@ -105,7 +105,16 @@ jobs:
         cd openwrt
         make defconfig
         make download -j16
-
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+        
+    - name: cache
+      uses: HiGarfield/cachewrtbuild@main
+      with:
+        ccache: 'true'
+        mixkey: N1d
+        prefix: ${{ github.workspace }}/openwrt
+        
     - name: Compile the firmware
       id: compile
       run: |
@@ -138,13 +147,13 @@ jobs:
     - name: Deliver package
       uses: actions/upload-artifact@v3
       with:
-        name: IPK ${{ env.FILE_DATE }}
+        name: N1d_IPK ${{ env.FILE_DATE }}
         path: ./openwrt/bin/package/
 
     - name: Deliver firmware
       uses: actions/upload-artifact@v3
       with:
-        name: firmware ${{ env.FILE_DATE }}
+        name: N1d_firmware ${{ env.FILE_DATE }}
         path: ./openwrt/bin/firmware/
 
     - name: Organize files
