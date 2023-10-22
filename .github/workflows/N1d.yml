@@ -39,7 +39,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - name: Check server configuration
       run: |
@@ -108,13 +108,6 @@ jobs:
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
         
-    - name: cache
-      uses: HiGarfield/cachewrtbuild@main
-      with:
-        ccache: 'true'
-        mixkey: N1d
-        prefix: ${{ github.workspace }}/openwrt
-        
     - name: Compile the firmware
       id: compile
       run: |
@@ -147,13 +140,13 @@ jobs:
     - name: Deliver package
       uses: actions/upload-artifact@v3
       with:
-        name: N1d_IPK ${{ env.FILE_DATE }}
+        name: IPK ${{ env.FILE_DATE }}
         path: ./openwrt/bin/package/
 
     - name: Deliver firmware
       uses: actions/upload-artifact@v3
       with:
-        name: N1d_firmware ${{ env.FILE_DATE }}
+        name: firmware ${{ env.FILE_DATE }}
         path: ./openwrt/bin/firmware/
 
     - name: Organize files
