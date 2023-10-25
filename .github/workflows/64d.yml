@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: 64Docker
+name: 64d
 
 on:
   repository_dispatch:
@@ -154,7 +154,7 @@ jobs:
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@v1
       with:
-        name: OpenWrt-x86-Docker ${{ env.PRODUCT_NAME }}${{ env.DATE }}
+        name: 64d ${{ env.PRODUCT_NAME }}${{ env.DATE }}
         tag: ${{ env.TAG_DATE }}
         artifacts: ${{ env.FIRMWARE }}/*
         allowUpdates: true
