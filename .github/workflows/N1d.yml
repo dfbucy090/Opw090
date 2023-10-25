@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: N1d
+name: N1D1
 
 on:
   repository_dispatch:
@@ -178,7 +178,7 @@ jobs:
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@v1
       with:
-        name: N1Docker1 ${{ env.DATE }}
+        name: N1D1 ${{ env.DATE }}
         tag: ${{ env.TAG_DATE }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         allowUpdates: true
