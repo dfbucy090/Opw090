@@ -37,7 +37,9 @@ git clone -b master --single-branch --depth=1 https://github.com/Leo-Jo-My/luci-
 #git clone -b main --single-branch --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
 git clone -b master --single-branch --depth=1 https://github.com/kenzok8/openwrt-packages.git package/openwrt-packages
 git clone -b master --single-branch --depth=1 https://github.com/kenzok8/small.git package/small
+pushd feeds/packages/lang
 rm -rf golang && svn co https://github.com/openwrt/packages/branches/openwrt-23.05/lang/golang
+popd
 
 # dockerd去版本验证
 #sed -i 's/^\s*$[(]call\sEnsureVendoredVersion/#&/' feeds/packages/utils/dockerd/Makefile
